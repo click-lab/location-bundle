@@ -1,0 +1,25 @@
+Clab\LocationBundle\Entity\Address:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        id:
+            expose: true
+            read_only: true
+        name:
+            expose: true
+            read_only: true
+        street:
+            expose: true
+            read_only: true
+        zip:
+            expose: true
+            read_only: true
+        city:
+            expose: true
+            read_only: true
+        latitude:
+            expose: true
+            read_only: true
+        longitude:
+            expose: true
+            read_only: true
