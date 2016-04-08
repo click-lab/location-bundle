@@ -26,12 +26,12 @@
   },
   "autoload" : {
     "psr-0" : {
-      "Clab\\ManagerBundle" : ""
+      "Clab\\LocationBundle" : ""
     }
   },
-  "target-dir" : "Clab/ManagerBundle",
+  "target-dir" : "Clab/LocationBundle",
   "repositories" : [{
-     "type": "vcs", "url": "https://github.com/click-lab/manager-bundle"
+     "type": "vcs", "url": "https://github.com/click-lab/location-bundle"
   }],
   "extra" : {
     "branch-alias" : {
