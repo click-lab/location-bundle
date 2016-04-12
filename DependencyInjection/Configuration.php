@@ -20,9 +20,16 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('app_location');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        
+        $rootNode
+            ->children()
+                ->scalarNode('api_domain')
+                ->info('Enter your api domain here ex: api.click-eat.fr ')
+                ->isRequired()
+                ->cannotBeEmpty()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
