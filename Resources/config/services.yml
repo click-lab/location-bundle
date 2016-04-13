@@ -13,13 +13,13 @@ services:
 
     app_location.place_listener:
         class: Clab\LocationBundle\Service\PlaceListener
-        arguments: [ @service_container, @liip_imagine.cache.manager, %apidomain% ]
+        arguments: [ @service_container, @liip_imagine.cache.manager, %clab_location.api_domain% ]
         tags:
             - { name: doctrine.event_listener, event: postLoad, method: postLoad }
 
     app_location.event_listener:
         class: Clab\LocationBundle\Service\EventListener
-        arguments: [ @service_container, @liip_imagine.cache.manager, %apidomain% ]
+        arguments: [ @service_container, @liip_imagine.cache.manager, %clab_location.api_domain% ]
         tags:
             - { name: doctrine.event_listener, event: postLoad, method: postLoad }
 
