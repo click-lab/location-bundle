@@ -20,11 +20,15 @@ class AddressType extends AbstractType
             $builder->add('name', null, array('label' => 'pro.address.nameLabel', 'required' => false));
         }
 
-        $builder->add('street', null, array('label' => 'pro.address.streetLabel', 'required' => true));
-        $builder->add('zip', null, array('label' => 'pro.address.zipLabel', 'required' => true));
-        $builder->add('city', null, array('label' => 'pro.address.cityLabel', 'required' => true));
-        //$builder->add('latitude', null, array('label' => 'Latitude', 'required' => false));
-        //$builder->add('longitude', null, array('label' => 'Longitude', 'required' => false));
+        $builder
+            ->add('street', null, array('label' => 'pro.address.streetLabel', 'required' => true))
+            ->add('zip', 'text', array(
+                'label' => 'pro.address.zipLabel',
+                'required' => true,
+                'pattern' => '[0-9]{5}'
+            ))
+            ->add('city', null, array('label' => 'pro.address.cityLabel', 'required' => true))
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
