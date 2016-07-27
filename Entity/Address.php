@@ -43,6 +43,46 @@ class Address
     private $company;
 
     /**
+     * @ORM\Column(name="building", type="string", length=255, nullable=true)
+     */
+    private $building;
+
+    /**
+     * @ORM\Column(name="door_code", type="string", length=255, nullable=true)
+     */
+    private $doorCode;
+
+    /**
+     * @ORM\Column(name="second_door_code", type="string", length=255, nullable=true)
+     */
+    private $secondDoorCode;
+
+    /**
+     * @ORM\Column(name="intercom", type="string", length=255, nullable=true)
+     */
+    private $intercom;
+
+    /**
+     * @ORM\Column(name="floor", type="string", length=255, nullable=true)
+     */
+    private $floor;
+
+    /**
+     * @ORM\Column(name="door", type="string", length=255, nullable=true)
+     */
+    private $door;
+
+    /**
+     * @ORM\Column(name="staircase", type="boolean", nullable=true)
+     */
+    private $staircase;
+
+    /**
+     * @ORM\Column(name="elevator", type="boolean", nullable=true)
+     */
+    private $elevator;
+
+    /**
      * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private $comment;
@@ -57,17 +97,29 @@ class Address
      */
     private $longitude;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Clab\UserBundle\Entity\User", inversedBy="addresses")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
+
     public function verbose()
     {
         $string = '';
-        if($this->getName()) { $string = $string . $this->getName() . ' : '; }
+
+        if ($this->getName()) {
+            $string = $string . $this->getName() . ' : ';
+        }
+
         $string = $string . $this->getStreet() . ' ' . $this->getZip() . ' ' . $this->getCity();
+
         return $string;
     }
 
     public function isEmpty()
     {
         $concat = $this->getStreet() . $this->getZip() . $this->getCity();
+
         return empty($concat);
     }
 
@@ -189,5 +241,181 @@ class Address
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param mixed $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBuilding()
+    {
+        return $this->building;
+    }
+
+    /**
+     * @param mixed $building
+     */
+    public function setBuilding($building)
+    {
+        $this->building = $building;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoorCode()
+    {
+        return $this->doorCode;
+    }
+
+    /**
+     * @param mixed $doorCode
+     */
+    public function setDoorCode($doorCode)
+    {
+        $this->doorCode = $doorCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSecondDoorCode()
+    {
+        return $this->secondDoorCode;
+    }
+
+    /**
+     * @param mixed $secondDoorCode
+     */
+    public function setSecondDoorCode($secondDoorCode)
+    {
+        $this->secondDoorCode = $secondDoorCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIntercom()
+    {
+        return $this->intercom;
+    }
+
+    /**
+     * @param mixed $intercom
+     */
+    public function setIntercom($intercom)
+    {
+        $this->intercom = $intercom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFloor()
+    {
+        return $this->floor;
+    }
+
+    /**
+     * @param mixed $floor
+     */
+    public function setFloor($floor)
+    {
+        $this->floor = $floor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoor()
+    {
+        return $this->door;
+    }
+
+    /**
+     * @param mixed $door
+     */
+    public function setDoor($door)
+    {
+        $this->door = $door;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStaircase()
+    {
+        return $this->staircase;
+    }
+
+    /**
+     * @param mixed $staircase
+     */
+    public function setStaircase($staircase)
+    {
+        $this->staircase = $staircase;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getElevator()
+    {
+        return $this->elevator;
+    }
+
+    /**
+     * @param mixed $elevator
+     */
+    public function setElevator($elevator)
+    {
+        $this->elevator = $elevator;
     }
 }

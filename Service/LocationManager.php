@@ -16,14 +16,12 @@ class LocationManager
 {
     protected $container;
     protected $em;
-    protected $request;
     protected $geocoder;
 
     public function __construct(ContainerInterface $container, EntityManager $em)
     {
         $this->container = $container;
         $this->em = $em;
-        $this->request = $this->container->get('request');
 
         $this->geocoder = new Geocoder();
         $this->geocoder->registerProviders(array(

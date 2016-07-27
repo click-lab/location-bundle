@@ -33,6 +33,7 @@ class AddressListener
 
     public function preUpdate(LifecycleEventArgs $args)
     {
+        $env = $this->container->get( 'kernel' )->getEnvironment();
         $entity = $args->getEntity();
         $entityManager = $args->getEntityManager();
 

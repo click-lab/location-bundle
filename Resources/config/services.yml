@@ -2,7 +2,6 @@ services:
     app_location.location_manager:
         class: Clab\LocationBundle\Service\LocationManager
         arguments: [ @service_container, @doctrine.orm.entity_manager ]
-        scope: request
 
     app_location.address_listener:
         class: Clab\LocationBundle\Service\AddressListener
