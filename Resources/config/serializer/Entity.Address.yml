@@ -5,21 +5,28 @@ Clab\LocationBundle\Entity\Address:
         id:
             expose: true
             read_only: true
+            groups: [app,pro]
         name:
             expose: true
             read_only: true
+            groups: [app,pro]
         street:
             expose: true
             read_only: true
+            groups: [app,search,public,pro,favorite]
         zip:
             expose: true
             read_only: true
+            groups: [app,search,public,pro,favorite]
         city:
             expose: true
             read_only: true
+            groups: [app,search,public,pro,favorite]
         latitude:
             expose: true
             read_only: true
+            groups: [app,search,public,pro,favorite]
         longitude:
             expose: true
             read_only: true
+            groups: [app,search,public,pro,favorite]
