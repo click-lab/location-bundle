@@ -9,9 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class AddressType extends AbstractType
 {
     protected $name = false;
+    protected $delivery = false;
 
-    public function __construct($name = false) {
+    public function __construct($name = false, $delivery=false) {
         $this->name = $name;
+        $this->delivery = $delivery;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -29,6 +31,14 @@ class AddressType extends AbstractType
             ))
             ->add('city', null, array('label' => 'pro.address.cityLabel', 'required' => true))
         ;
+
+        if($this->delivery) {
+            $builder
+                ->add('intercom',null,array('label' => 'digicode', 'required' => false))
+                ->add('floor',null,array('label' => 'étage', 'required' => false))
+                ->add('door',null,array('label' => 'porte', 'required' => false))
+            ;
+        }
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
