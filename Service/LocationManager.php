@@ -11,7 +11,6 @@ use Geocoder\HttpAdapter\CurlHttpAdapter;
 
 use Clab\ApiBundle\Entity\Session;
 use Clab\LocationBundle\Entity\Address;
-use Symfony\Component\VarDumper\VarDumper;
 
 class LocationManager
 {
@@ -60,7 +59,6 @@ class LocationManager
         }
 
         $response = $this->geocoder->geocode($address);
-        VarDumper::dump($response);
         $error = false;
 
         if ($response->getStatus() == 'OK') {
