@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 use Ivory\GoogleMap\Services\Geocoding\Geocoder;
 use Ivory\GoogleMap\Services\Geocoding\GeocoderProvider;
+use Geocoder\HttpAdapter\CurlHttpAdapter;
 
 use Clab\ApiBundle\Entity\Session;
 use Clab\LocationBundle\Entity\Address;
@@ -22,7 +23,7 @@ class LocationManager
         $this->container = $container;
         $this->em = $em;
 
-        $this->geocoder = new Geocoder();
+        $this->geocoder = $this->container->get('ivory_google_map.geocoder');
     }
 
     public function getGeocoder()
