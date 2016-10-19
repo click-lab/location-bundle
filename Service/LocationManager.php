@@ -11,6 +11,7 @@ use Geocoder\HttpAdapter\CurlHttpAdapter;
 
 use Clab\ApiBundle\Entity\Session;
 use Clab\LocationBundle\Entity\Address;
+use Symfony\Component\VarDumper\VarDumper;
 
 class LocationManager
 {
@@ -24,9 +25,15 @@ class LocationManager
         $this->em = $em;
 
         $this->geocoder = new Geocoder();
+
+        $provider = new GeocoderProvider(new CurlHttpAdapter());
+
+        $provider->setUrl('http://maps.googleapis.com/maps/api/geocode?key=AIzaSyAZlQW4VvC8V0PTYX_1kUk2L10kU3FneGQ');
+
         $this->geocoder->registerProviders(array(
-            new GeocoderProvider(new CurlHttpAdapter()),
-        ));
+                    $provider
+                )
+            );
     }
 
     public function getGeocoder()
@@ -59,6 +66,7 @@ class LocationManager
         }
 
         $response = $this->geocoder->geocode($address);
+        VarDumper::dump($response);
         $error = false;
 
         if ($response->getStatus() == 'OK') {
