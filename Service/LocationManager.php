@@ -24,7 +24,10 @@ class LocationManager
         $this->container = $container;
         $this->em = $em;
 
-        $this->geocoder = $this->container->get('ivory_google_map.geocoder');
+        $this->geocoder = new Geocoder();
+        $this->geocoder->registerProviders(array(
+            new GeocoderProvider(new CurlHttpAdapter()),
+        ));
     }
 
     public function getGeocoder()
