@@ -18,11 +18,14 @@ class LocationManager
     protected $container;
     protected $em;
     protected $geocoder;
+    protected $geocoderbis;
 
     public function __construct(ContainerInterface $container, EntityManager $em)
     {
         $this->container = $container;
         $this->em = $em;
+
+        $this->geocoderbis = $this->container->get('bazinga_geocoder.geocoder');
 
         $this->geocoder = new Geocoder();
         $this->geocoder->registerProviders(array(
@@ -59,22 +62,12 @@ class LocationManager
             $address = $address->verbose();
         }
 
-        $response = $this->geocoder->geocode($address);
-        VarDumper::dump($response);
+        $response = $this->geocoderbis->geocode($address);
         $error = false;
 
-        if ($response->getStatus() == 'OK') {
-            $results = $response->getResults();
-            $location = $results[0];
-        } else {
-            $error = true;
-        }
-
-        if (isset($location) && $location) {
-            $coordinates = $location->getGeometry()->getLocation();
-
-            $latitude = $coordinates->getLatitude();
-            $longitude = $coordinates->getLongitude();
+        if ($response->getLatitude() && $response->getLongitude()) {
+            $latitude = $response->getLatitude();
+            $longitude = $response->getLongitude();
         } else {
             $error = true;
         }
