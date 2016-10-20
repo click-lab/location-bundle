@@ -35,7 +35,7 @@ class LocationManager
     public function search($query)
     {
         $response = $this->geocoder->geocode($query . ', France');
-        VarDumper::dump($response);
+
         if ($response->getStatus() == 'OK') {
             $results = $response->getResults();
         } else {
@@ -57,7 +57,7 @@ class LocationManager
         }
 
         $response = $this->geocoder->geocode($address);
-
+        VarDumper::dump($response);
         $error = false;
 
         if ($response->getStatus() == 'OK') {
