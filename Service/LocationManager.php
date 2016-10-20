@@ -11,6 +11,7 @@ use Geocoder\HttpAdapter\CurlHttpAdapter;
 
 use Clab\ApiBundle\Entity\Session;
 use Clab\LocationBundle\Entity\Address;
+use Symfony\Component\VarDumper\VarDumper;
 
 class LocationManager
 {
@@ -34,7 +35,7 @@ class LocationManager
     public function search($query)
     {
         $response = $this->geocoder->geocode($query . ', France');
-
+        VarDumper::dump($response);
         if ($response->getStatus() == 'OK') {
             $results = $response->getResults();
         } else {
