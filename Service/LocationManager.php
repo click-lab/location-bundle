@@ -38,6 +38,11 @@ class LocationManager
         return $this->geocoder;
     }
 
+    public function getGeocoderBis()
+    {
+        return $this->geocoderbis;
+    }
+
     public function search($query)
     {
         $response = $this->geocoder->geocode($query . ', France');
