@@ -73,12 +73,12 @@ class Address
     private $door;
 
     /**
-     * @ORM\Column(name="staircase", type="boolean", nullable=true)
+     * @ORM\Column(name="staircase", type="string", nullable=true)
      */
     private $staircase;
 
     /**
-     * @ORM\Column(name="elevator", type="boolean", nullable=true)
+     * @ORM\Column(name="elevator", type="string", nullable=true)
      */
     private $elevator;
 
@@ -103,6 +103,8 @@ class Address
      */
     protected $user;
 
+    protected $description;
+
     public function verbose()
     {
         $string = '';
@@ -123,6 +125,14 @@ class Address
         return $string;
     }
 
+    public function fullStringDescription()
+    {
+        $concatenate = 'Société:' . $this->company . '\nImmeuble: ' .  $this->building . '\nCode de porte: ' . $this->doorCode . '\nCode de seconde porte: ' . $this->secondDoorCode .
+            '\nInterphone: ' . $this->intercom . '\nEtage: ' . $this->floor . '\nPorte: ' . $this->door . '\nEscalier: ' . $this->staircase . '\nAscenceur: ' . $this->elevator . '\nCommentaire: ' . $this->comment;
+
+        return $concatenate;
+    }
+
     public function isEmpty()
     {
         $concat = $this->getStreet() . $this->getZip() . $this->getCity();
@@ -132,7 +142,7 @@ class Address
 
     public function __toString()
     {
-	   return $this->verbose();
+        return $this->verbose();
     }
 
     public static function getUnwantedArray()

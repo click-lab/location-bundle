@@ -30,3 +30,9 @@ Clab\LocationBundle\Entity\Address:
             expose: true
             read_only: true
             groups: [app,search,public,pro,favorite]
+        description:
+            expose: true
+            read_only: true
+            accessor:
+                  getter: fullStringDescription
+            groups: [app,search,public,pro,favorite]
