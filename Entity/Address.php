@@ -127,8 +127,8 @@ class Address
 
     public function fullStringDescription()
     {
-        $concatenate = 'Société:' . $this->company . '\n Immeuble: ' .  $this->building . '\n Code de porte: ' . $this->doorCode . '\n Code de seconde porte: ' . $this->secondDoorCode .
-            '\n Interphone: ' . $this->intercom . '\n Etage: ' . $this->floor . '\n Porte: ' . $this->door . '\n Escalier: ' . $this->staircase . '\n Ascenceur: ' . $this->elevator . '\n Commentaire: ' . $this->comment;
+        $concatenate = "Société:". $this->company . "\n Immeuble: " .  $this->building . "\n Code de porte: " . $this->doorCode . "\n Code de seconde porte: " . $this->secondDoorCode .
+            "\n Interphone: " . $this->intercom . "\n Etage: " . $this->floor . "\n Porte: " . $this->door . "\n Escalier: " . $this->staircase . "\n Ascenceur: " . $this->elevator . "\n Commentaire: " . $this->comment;
 
         return $concatenate;
     }
