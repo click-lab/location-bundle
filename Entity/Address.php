@@ -114,14 +114,7 @@ class Address
         }
 
         $string = $string . $this->getStreet() . ' ' . $this->getZip() . ' ' . $this->getCity();
-
-        $string =
-                    $string
-                    . ($this->getBuilding() ? '- Batiment: '.$this->getBuilding() : '') . ' '
-                    . ($this->getElevator() ? '- Ascenseur: '.$this->getElevator() : '') . ' '
-                    . ($this->getComment() ? '- Commentaire: '.$this->getComment() : '') . ' '
-        ;
-
+        
         return $string;
     }
 
