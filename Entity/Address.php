@@ -114,14 +114,30 @@ class Address
         }
 
         $string = $string . $this->getStreet() . ' ' . $this->getZip() . ' ' . $this->getCity();
-        
+
         return $string;
     }
 
     public function fullStringDescription()
     {
-        $concatenate = "Société:". $this->company . "\n Immeuble: " .  $this->building . "\n Code de porte: " . $this->doorCode . "\n Code de seconde porte: " . $this->secondDoorCode .
-            "\n Interphone: " . $this->intercom . "\n Etage: " . $this->floor . "\n Porte: " . $this->door . "\n Escalier: " . $this->staircase . "\n Ascenceur: " . $this->elevator . "\n Commentaire: " . $this->comment;
+        $fields = [
+            "Société" => 'company',
+            "Immeuble" => 'building',
+            "Code de porte" => 'doorCode',
+            "Code de seconde porte" => 'secondDoorCode',
+            "Interphone" => 'intercom',
+            "Etage" => 'floor',
+            "Porte" => 'door',
+            "Escalier" => 'staircase',
+            "Ascenceur" => 'elevator',
+            "Commentaire" => 'comment'
+        ];
+
+        $concatenate = '';
+
+        foreach ($fields as $key => $field) {
+            $concatenate .= $this->$field ? sprintf("%s: %s\n", $key, $this->$field) : '';
+        }
 
         return $concatenate;
     }
